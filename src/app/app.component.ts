@@ -39,7 +39,7 @@ export class AppComponent {
 
       this.fileUploadService.putFileWithUrl(this.fileObj, this.fileUrl).subscribe(
         (data) => {
-          console.log(data);
+          console.log(data.headers.get("ETag"));
         });
     });
   }
