@@ -1,0 +1,23 @@
+.fileInput
+{
+    width: 50%;
+    margin-right: 10px;
+    max-width: 350px;
+}
+
+.input
+{
+    width: 50%;
+    margin-right: 10px;
+    max-width: 350px;
+}
+
+.UUID 
+{
+    margin-left: 20px;
+}
+
+.link
+{
+    margin-left: 20px;
+}
