@@ -11,9 +11,7 @@
 <div class="panel">
   <p class="panel-heading">Download</p>
   <div class="panel-block">
-    <label>
-      <input type="text" class="input" placeholder="UUID" (change)="onUuidPicked($event)">
-    </label>
+    <input type="text" class="input" placeholder="UUID" (change)="onUuidPicked($event)">
     <button class="button" (click)="onFileGet()">Get File</button>
     <a *ngIf="getFileLink" href="{{getFileLink}}" class="link">click me</a>
     <span *ngIf="checkSum">{{checkSum}}</span>
