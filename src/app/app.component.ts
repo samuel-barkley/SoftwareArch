@@ -39,7 +39,7 @@ export class AppComponent {
 
       this.fileUploadService.putFileWithUrl(this.fileObj, this.fileUrl).subscribe(
         (data) => {
-          console.log(data + ' ' + res);
+          console.log(data);
         });
     });
   }

@@ -21,7 +21,7 @@ export class FileUploaderServiceService {
     return this.http.get('https://e72pvjn85e.execute-api.us-east-1.amazonaws.com/returnPresignedUrl', this.httpOptions);
   }
 
-  putFileWithUrl(file: File, url): Observable<ArrayBuffer> {
-    return this.http.put(url, file, this.httpOptions);
+  putFileWithUrl(file: File, url) {
+    return this.http.put(url, file, {observe: 'response'});
   }
 }
