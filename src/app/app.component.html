@@ -13,7 +13,7 @@
   <div class="panel-block">
     <input type="text" class="input" placeholder="UUID" (change)="onUuidPicked($event)">
     <button class="button" (click)="onFileGet()">Get File</button>
-    <a *ngIf="getFileLink" href={{getFileLink}} class="link">click me</a>
+    <a *ngIf="getFileLink" href="{{getFileLink}}" class="link">click me</a>
     <span *ngIf="checkSum">{{checkSum}}</span>
   </div>
 </div>
