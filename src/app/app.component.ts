@@ -17,6 +17,8 @@ export class AppComponent {
   setUUID: string;
   getFileLink: string;
   checkSum: string;
+  getCheckSum: string;
+  chosenUuid: string;
 
   constructor(private fileUploadService: FileUploaderServiceService) {
     this.errorMsg = false;
@@ -29,8 +31,8 @@ export class AppComponent {
     }
     const fileForm = new FormData();
     fileForm.append('file', this.fileObj);
-    this.fileUploadService.getSignedUrl(this.fileType).subscribe(res => {
-      const SPLITRES = res.toString().split('||');
+    this.fileUploadService.getSignedUrl(this.fileType).subscribe(res0 => {
+      const SPLITRES = res0.toString().split('||');
       this.fileUrl = SPLITRES[0];
       this.getUUID = SPLITRES[1];
       console.log(SPLITRES);
@@ -40,6 +42,18 @@ export class AppComponent {
       this.fileUploadService.putFileWithUrl(this.fileObj, this.fileUrl).subscribe(
         (data) => {
           console.log(data.headers.get("ETag"));
+          this.checkSum = data.headers.get("ETag");
+          this.checkSum = this.checkSum.split("\"")[1];
+          
+          console.log("------");
+          console.log(this.getUUID);
+          console.log(this.checkSum);
+          this.fileUploadService.sendCheckSum(this.getUUID, this.checkSum).subscribe(
+            (res1) => {
+              console.log("res 1: " + res1);
+              console.log(res1);
+            }
+          );
         });
     });
   }
@@ -56,5 +70,19 @@ export class AppComponent {
 
   onUuidPicked(event): void {
     this.setUUID = (event.target as HTMLInputElement).value;
+  }
+
+  getCheckSumFromButton(): void
+  {
+    this.fileUploadService.getCheckSum(this.chosenUuid).subscribe((res) =>
+    {
+      this.getCheckSum = res["Item"]["checkSum"];
+      console.log(this.getCheckSum);
+    });
+  }
+
+  onUuidCheckSumPicked(event): void
+  {
+    this.chosenUuid = (event.target as HTMLInputElement).value;
   }
 }

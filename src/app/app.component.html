@@ -3,7 +3,7 @@
   <div class="panel-block">
     <input type="file" placeholder="Upload file" class="fileInput" (change)="onFilePicked($event)">
     <button (click)="onFileUpload()" class="button">Upload File</button>
-    <span *ngIf="errorMsg">Please select file</span>
+    <span *ngIf="errorMsg" class="extraMsg">Please select file</span>
     <span *ngIf="getUUID" class="UUID">this is your UUID {{getUUID}}</span>
   </div>
 </div>
@@ -14,6 +14,15 @@
     <input type="text" class="input" placeholder="UUID" (change)="onUuidPicked($event)">
     <button class="button" (click)="onFileGet()">Get File</button>
     <a *ngIf="getFileLink" href="{{getFileLink}}" class="link">click me</a>
-    <span *ngIf="checkSum">{{checkSum}}</span>
+    <span *ngIf="checkSum" class="label">MD5: {{checkSum}}</span>
+  </div>
+</div>
+
+<div class="panel">
+  <p class="panel-heading">Get Checksum</p>
+  <div class="panel-block">
+    <input type="text" class="input" placeholder="UUID" (change)="onUuidCheckSumPicked($event)">
+    <button class="button" (click)="getCheckSumFromButton()">Get Checksum</button> 
+    <span *ngIf="getCheckSum" class="extraMsg label">CheckSum: "{{getCheckSum}}"</span>
   </div>
 </div>
