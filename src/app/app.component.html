@@ -22,7 +22,7 @@
   <p class="panel-heading">Get Checksum</p>
   <div class="panel-block">
     <input type="text" class="input" placeholder="UUID" (change)="onUuidCheckSumPicked($event)">
-    <button class="button" (click)="getCheckSumFromButton()">Get Checksum</button> 
+    <button class="button" (click)="getCheckSumFromButton()">Get Checksum</button>
     <span *ngIf="getCheckSum" class="extraMsg label">CheckSum: "{{getCheckSum}}"</span>
   </div>
 </div>
